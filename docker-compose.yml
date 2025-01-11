@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://bhaxcrjvl1dwucdovvw1-mysql.services.clever-cloud.com:3306/bhaxcrjvl1dwucdovvw1
+      SPRING_DATASOURCE_USERNAME: ugc3rkqyobaldc84
+      SPRING_DATASOURCE_PASSWORD: 7u7muDpr7Dfxf4VYyFd2
+      SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE: 5
+      SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
+      SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT: 10000
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 7u7muDpr7Dfxf4VYyFd2
+      MYSQL_DATABASE: bhaxcrjvl1dwucdovvw1
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
