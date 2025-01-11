@@ -9,6 +9,8 @@ services:
       - "8081:8080"
     depends_on:
       - mysql
+    volumes:
+      - ./uploads/video:/app/uploads/video # Gắn thư mục video từ host vào container
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://bhaxcrjvl1dwucdovvw1-mysql.services.clever-cloud.com:3306/bhaxcrjvl1dwucdovvw1
       SPRING_DATASOURCE_USERNAME: ugc3rkqyobaldc84
